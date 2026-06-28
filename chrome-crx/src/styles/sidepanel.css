@@ -1,0 +1,40 @@
+/*
+ * KaTeX vendor styles are imported from src/sidepanel/index.tsx via
+ * `katex/dist/katex.min.css`. Keep this file for sidepanel-specific global CSS.
+ */
+
+@keyframes streaming-caret-blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/*
+ * Render the streaming caret via CSS so it does not pollute markdown text or
+ * become part of copied code content.
+ */
+.streaming-markdown > :last-child:not(ul):not(ol):not(.code-block-root)::after,
+.streaming-markdown > :is(ul:last-child, ol:last-child) > li:last-child::after,
+.streaming-markdown > .code-block-root:last-child .code-block__code::after {
+    content: '│';
+    display: inline-block;
+    margin-left: 0.15rem;
+    animation: streaming-caret-blink 1s step-end infinite;
+    color: inherit;
+    user-select: none;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .streaming-markdown > :last-child:not(ul):not(ol):not(.code-block-root)::after,
+    .streaming-markdown > :is(ul:last-child, ol:last-child) > li:last-child::after,
+    .streaming-markdown > .code-block-root:last-child .code-block__code::after {
+        animation: none;
+    }
+}

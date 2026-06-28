@@ -1,0 +1,83 @@
+.rich-text-input {
+  min-height: 24px;
+  max-height: 50vh;
+  overflow-y: auto;
+  outline: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  width: 100%;
+  resize: none;
+  border: none;
+  background: transparent;
+}
+
+.rich-text-input:focus {
+  outline: none;
+  ring: 0;
+  border-color: transparent;
+}
+
+.rich-text-input p {
+  margin: 0;
+}
+
+.rich-text-input .is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #999;
+  pointer-events: none;
+  height: 0;
+}
+
+.shortcut-chip {
+  --shortcut-chip-color: hsl(var(--accent-secondary-100));
+  --shortcut-chip-highlight: color-mix(in srgb, var(--shortcut-chip-color) 45%, white);
+  display: inline-block;
+  padding: 0;
+  margin: 0 2px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  color: var(--shortcut-chip-color);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.ProseMirror .shortcut-chip.shortcut-chip-flash {
+  background-image: linear-gradient(
+    90deg,
+    var(--shortcut-chip-color) 0%,
+    var(--shortcut-chip-color) 36%,
+    var(--shortcut-chip-highlight) 50%,
+    var(--shortcut-chip-color) 64%,
+    var(--shortcut-chip-color) 100%
+  );
+  background-size: 400% 100%;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shimmertext 1.15s ease-out 1 both;
+}
+
+/* TipTap ProseMirror 样式 */
+.ProseMirror {
+  outline: none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #999;
+  pointer-events: none;
+  height: 0;
+}
