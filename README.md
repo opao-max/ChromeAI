@@ -147,3 +147,12 @@ Contributions welcome! Fork → branch → commit → PR.
 ---
 
 <p align="center">Made with 🦆 by the SuperDuck community</p>
+
+## Development Notes
+
+- Requires Node.js 20+ and npm; 
+pm ci installs pinned dependencies from the lockfile.
+- The extension is built with TypeScript strict mode; run 
+pm run typecheck before opening a PR.
+- Chrome extension pages are served locally during development; production builds are emitted to dist/.
+
