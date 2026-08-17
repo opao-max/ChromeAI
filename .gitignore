@@ -79,3 +79,8 @@ chrome-crx/e2e/playwright-report/
 
 # Local-only documents (architecture audit, personal notes, etc.)
 docs/
+# Build output & env
+dist-local/
+.env
+*.zip
+
