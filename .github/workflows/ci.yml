@@ -9,9 +9,12 @@ on:
     - cron: '0 3 * * *'
 
 jobs:
-  lint-build-test:
-    name: Lint, Build & Test
+  typecheck-lint:
+    name: Typecheck & Lint (chrome-crx)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: chrome-crx
     steps:
       - uses: actions/checkout@v4
 
@@ -23,14 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Type check (chrome-crx)
-        run: npx tsc --noEmit -p chrome-crx/tsconfig.json
+      - name: Type check
+        run: npm run typecheck
 
       - name: Lint
         run: npm run lint --if-present
 
       - name: Test
-        run: npm test --if-present
-
-      - name: Build
-        run: npm run build --if-present
+        run: npm run test:coverage --if-present
